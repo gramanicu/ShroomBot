@@ -1,5 +1,5 @@
-import * as Discord from 'discord.js';
-import fs from 'fs';
+import * as Discord from "discord.js";
+import fs from "fs";
 
 /**
  * An interface that describes a bot command
@@ -25,12 +25,16 @@ interface IBotCommand {
     execute(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void>;
 }
 
+/**
+ * Load all the command (classes) from the commands folder
+ * @param cmdFolder The folder in which the commands are stored
+ */
 export function loadAllCommands(cmdFolder: string): IBotCommand[] {
     const commands: IBotCommand[] = [];
 
-    fs.readdirSync(cmdFolder).forEach(file => {
-        const cmdClass = require(`${cmdFolder}${file}`).default;
-        const cmd = new cmdClass() as IBotCommand;
+    fs.readdirSync(cmdFolder).forEach((file) => {
+        const CmdClass = require(`${cmdFolder}${file}`).default;
+        const cmd = new CmdClass() as IBotCommand;
         commands.push(cmd);
     });
 

@@ -1,7 +1,7 @@
-export const apiRoute = '.api.riotgames.com';
-export const summonerDataRoute = '/lol/summoner/v4/summoners/by-name/'; // + summoner name
-export const champMasteryRoute = '/lol/champion-mastery/v4/champion-masteries/by-summoner/'; // + encrypted summoner id
-export const summonerLeagues = '/lol/league/v4/entries/by-summoner/'; // + encrypted summoner id
+export const apiRoute = ".api.riotgames.com";
+export const summonerDataRoute = "/lol/summoner/v4/summoners/by-name/"; // + summoner name
+export const champMasteryRoute = "/lol/champion-mastery/v4/champion-masteries/by-summoner/"; // + encrypted summoner id
+export const summonerLeagues = "/lol/league/v4/entries/by-summoner/"; // + encrypted summoner id
 
 /**
  * Returns the actual server name for the specified region
@@ -22,157 +22,162 @@ export function checkRegion(region: string): string {
  * @param id The id of the champion
  */
 export function getChampName(id: number): string {
-    switch (id) {
-        case 266: return "Aatrox";
-        case 412: return "Thresh";
-        case 23: return "Tryndamere";
-        case 79: return "Gragas";
-        case 69: return "Cassiopeia";
-        case 136: return "Aurelion Sol";
-        case 13: return "Ryze";
-        case 78: return "Poppy";
-        case 14: return "Sion";
-        case 1: return "Annie";
-        case 202: return "Jhin";
-        case 43: return "Karma";
-        case 111: return "Nautilus";
-        case 240: return "Kled";
-        case 99: return "Lux";
-        case 103: return "Ahri";
-        case 2: return "Olaf";
-        case 112: return "Viktor";
-        case 34: return "Anivia";
-        case 27: return "Singed";
-        case 86: return "Garen";
-        case 127: return "Lissandra";
-        case 57: return "Maokai";
-        case 25: return "Morgana";
-        case 28: return "Evelynn";
-        case 105: return "Fizz";
-        case 74: return "Heimerdinger";
-        case 238: return "Zed";
-        case 68: return "Rumble";
-        case 82: return "Mordekaiser";
-        case 37: return "Sona";
-        case 96: return "Kog'Maw";
-        case 55: return "Katarina";
-        case 117: return "Lulu";
-        case 22: return "Ashe";
-        case 30: return "Karthus";
-        case 12: return "Alistar";
-        case 122: return "Darius";
-        case 67: return "Vayne";
-        case 110: return "Varus";
-        case 77: return "Udyr";
-        case 89: return "Leona";
-        case 126: return "Jayce";
-        case 134: return "Syndra";
-        case 80: return "Pantheon";
-        case 92: return "Riven";
-        case 121: return "Kha'Zix";
-        case 42: return "Corki";
-        case 268: return "Azir";
-        case 51: return "Caitlyn";
-        case 76: return "Nidalee";
-        case 85: return "Kennen";
-        case 3: return "Galio";
-        case 45: return "Veigar";
-        case 432: return "Bard";
-        case 150: return "Gnar";
-        case 90: return "Malzahar";
-        case 104: return "Graves";
-        case 254: return "Vi";
-        case 10: return "Kayle";
-        case 39: return "Irelia";
-        case 64: return "Lee Sin";
-        case 420: return "Illaoi";
-        case 60: return "Elise";
-        case 106: return "Volibear";
-        case 20: return "Nunu";
-        case 4: return "Twisted Fate";
-        case 24: return "Jax";
-        case 102: return "Shyvana";
-        case 429: return "Kalista";
-        case 36: return "Dr. Mundo";
-        case 427: return "Ivern";
-        case 131: return "Diana";
-        case 223: return "Tahm Kench";
-        case 63: return "Brand";
-        case 113: return "Sejuani";
-        case 8: return "Vladimir";
-        case 154: return "Zac";
-        case 421: return "Rek'Sai";
-        case 133: return "Quinn";
-        case 84: return "Akali";
-        case 163: return "Taliyah";
-        case 18: return "Tristana";
-        case 120: return "Hecarim";
-        case 15: return "Sivir";
-        case 236: return "Lucian";
-        case 107: return "Rengar";
-        case 19: return "Warwick";
-        case 72: return "Skarner";
-        case 54: return "Malphite";
-        case 157: return "Yasuo";
-        case 101: return "Xerath";
-        case 17: return "Teemo";
-        case 75: return "Nasus";
-        case 58: return "Renekton";
-        case 119: return "Draven";
-        case 35: return "Shaco";
-        case 50: return "Swain";
-        case 91: return "Talon";
-        case 40: return "Janna";
-        case 115: return "Ziggs";
-        case 245: return "Ekko";
-        case 61: return "Orianna";
-        case 114: return "Fiora";
-        case 9: return "Fiddlesticks";
-        case 31: return "Cho'Gath";
-        case 33: return "Rammus";
-        case 7: return "LeBlanc";
-        case 16: return "Soraka";
-        case 26: return "Zilean";
-        case 56: return "Nocturne";
-        case 222: return "Jinx";
-        case 83: return "Yorick";
-        case 6: return "Urgot";
-        case 203: return "Kindred";
-        case 21: return "Miss Fortune";
-        case 62: return "Wukong";
-        case 53: return "Blitzcrank";
-        case 98: return "Shen";
-        case 201: return "Braum";
-        case 5: return "Xin Zhao";
-        case 29: return "Twitch";
-        case 11: return "Master Yi";
-        case 44: return "Taric";
-        case 32: return "Amumu";
-        case 41: return "Gangplank";
-        case 48: return "Trundle";
-        case 38: return "Kassadin";
-        case 161: return "Vel'Koz";
-        case 143: return "Zyra";
-        case 267: return "Nami";
-        case 59: return "Jarvan IV";
-        case 81: return "Ezreal";
-        case 164: return "Camille";
-        case 141: return "Kayn";
-        case 516: return "Ornn";
-        case 142: return "Zoe";
-        case 498: return "Xayah";
-        case 497: return "Rakan";
-        case 555: return "Pyke";
-        case 145: return "Kai'Sa";
-        case 518: return "Neeko";
-        case 235: return "Senna";
-        case 523: return "Aphelios";
-        case 517: return "Sylas";
-        case 350: return "Yuumi";
-        case 246: return "Qiyana";
-        case 875: return "Sett";
-        case 876: return "Lillia";
-        case 777: return "Yone";
-        default: return "Samira";
-    }
+    const champs = [{ "key": 266, "value": "Aatrox"},
+    { "key": 412, "value": "Thresh"},
+    { "key": 23, "value": "Tryndamere"},
+    { "key": 79, "value": "Gragas"},
+    { "key": 69, "value": "Cassiopeia"},
+    { "key": 136, "value": "Aurelion Sol"},
+    { "key": 13, "value": "Ryze"},
+    { "key": 78, "value": "Poppy"},
+    { "key": 14, "value": "Sion"},
+    { "key": 1, "value": "Annie"},
+    { "key": 202, "value": "Jhin"},
+    { "key": 43, "value": "Karma"},
+    { "key": 111, "value": "Nautilus"},
+    { "key": 240, "value": "Kled"},
+    { "key": 99, "value": "Lux"},
+    { "key": 103, "value": "Ahri"},
+    { "key": 2, "value": "Olaf"},
+    { "key": 112, "value": "Viktor"},
+    { "key": 34, "value": "Anivia"},
+    { "key": 27, "value": "Singed"},
+    { "key": 86, "value": "Garen"},
+    { "key": 127, "value": "Lissandra"},
+    { "key": 57, "value": "Maokai"},
+    { "key": 25, "value": "Morgana"},
+    { "key": 28, "value": "Evelynn"},
+    { "key": 105, "value": "Fizz"},
+    { "key": 74, "value": "Heimerdinger"},
+    { "key": 238, "value": "Zed"},
+    { "key": 68, "value": "Rumble"},
+    { "key": 82, "value": "Mordekaiser"},
+    { "key": 37, "value": "Sona"},
+    { "key": 96, "value": "Kog'Maw"},
+    { "key": 55, "value": "Katarina"},
+    { "key": 117, "value": "Lulu"},
+    { "key": 22, "value": "Ashe"},
+    { "key": 30, "value": "Karthus"},
+    { "key": 12, "value": "Alistar"},
+    { "key": 122, "value": "Darius"},
+    { "key": 67, "value": "Vayne"},
+    { "key": 110, "value": "Varus"},
+    { "key": 77, "value": "Udyr"},
+    { "key": 89, "value": "Leona"},
+    { "key": 126, "value": "Jayce"},
+    { "key": 134, "value": "Syndra"},
+    { "key": 80, "value": "Pantheon"},
+    { "key": 92, "value": "Riven"},
+    { "key": 121, "value": "Kha'Zix"},
+    { "key": 42, "value": "Corki"},
+    { "key": 268, "value": "Azir"},
+    { "key": 51, "value": "Caitlyn"},
+    { "key": 76, "value": "Nidalee"},
+    { "key": 85, "value": "Kennen"},
+    { "key": 3, "value": "Galio"},
+    { "key": 45, "value": "Veigar"},
+    { "key": 432, "value": "Bard"},
+    { "key": 150, "value": "Gnar"},
+    { "key": 90, "value": "Malzahar"},
+    { "key": 104, "value": "Graves"},
+    { "key": 254, "value": "Vi"},
+    { "key": 10, "value": "Kayle"},
+    { "key": 39, "value": "Irelia"},
+    { "key": 64, "value": "Lee Sin"},
+    { "key": 420, "value": "Illaoi"},
+    { "key": 60, "value": "Elise"},
+    { "key": 106, "value": "Volibear"},
+    { "key": 20, "value": "Nunu"},
+    { "key": 4, "value": "Twisted Fate"},
+    { "key": 24, "value": "Jax"},
+    { "key": 102, "value": "Shyvana"},
+    { "key": 429, "value": "Kalista"},
+    { "key": 36, "value": "Dr. Mundo"},
+    { "key": 427, "value": "Ivern"},
+    { "key": 131, "value": "Diana"},
+    { "key": 223, "value": "Tahm Kench"},
+    { "key": 63, "value": "Brand"},
+    { "key": 113, "value": "Sejuani"},
+    { "key": 8, "value": "Vladimir"},
+    { "key": 154, "value": "Zac"},
+    { "key": 421, "value": "Rek'Sai"},
+    { "key": 133, "value": "Quinn"},
+    { "key": 84, "value": "Akali"},
+    { "key": 163, "value": "Taliyah"},
+    { "key": 18, "value": "Tristana"},
+    { "key": 120, "value": "Hecarim"},
+    { "key": 15, "value": "Sivir"},
+    { "key": 236, "value": "Lucian"},
+    { "key": 107, "value": "Rengar"},
+    { "key": 19, "value": "Warwick"},
+    { "key": 72, "value": "Skarner"},
+    { "key": 54, "value": "Malphite"},
+    { "key": 157, "value": "Yasuo"},
+    { "key": 101, "value": "Xerath"},
+    { "key": 17, "value": "Teemo"},
+    { "key": 75, "value": "Nasus"},
+    { "key": 58, "value": "Renekton"},
+    { "key": 119, "value": "Draven"},
+    { "key": 35, "value": "Shaco"},
+    { "key": 50, "value": "Swain"},
+    { "key": 91, "value": "Talon"},
+    { "key": 40, "value": "Janna"},
+    { "key": 115, "value": "Ziggs"},
+    { "key": 245, "value": "Ekko"},
+    { "key": 61, "value": "Orianna"},
+    { "key": 114, "value": "Fiora"},
+    { "key": 9, "value": "Fiddlesticks"},
+    { "key": 31, "value": "Cho'Gath"},
+    { "key": 33, "value": "Rammus"},
+    { "key": 7, "value": "LeBlanc"},
+    { "key": 16, "value": "Soraka"},
+    { "key": 26, "value": "Zilean"},
+    { "key": 56, "value": "Nocturne"},
+    { "key": 222, "value": "Jinx"},
+    { "key": 83, "value": "Yorick"},
+    { "key": 6, "value": "Urgot"},
+    { "key": 203, "value": "Kindred"},
+    { "key": 21, "value": "Miss Fortune"},
+    { "key": 62, "value": "Wukong"},
+    { "key": 53, "value": "Blitzcrank"},
+    { "key": 98, "value": "Shen"},
+    { "key": 201, "value": "Braum"},
+    { "key": 5, "value": "Xin Zhao"},
+    { "key": 29, "value": "Twitch"},
+    { "key": 11, "value": "Master Yi"},
+    { "key": 44, "value": "Taric"},
+    { "key": 32, "value": "Amumu"},
+    { "key": 41, "value": "Gangplank"},
+    { "key": 48, "value": "Trundle"},
+    { "key": 38, "value": "Kassadin"},
+    { "key": 161, "value": "Vel'Koz"},
+    { "key": 143, "value": "Zyra"},
+    { "key": 267, "value": "Nami"},
+    { "key": 59, "value": "Jarvan IV"},
+    { "key": 81, "value": "Ezreal"},
+    { "key": 164, "value": "Camille"},
+    { "key": 141, "value": "Kayn"},
+    { "key": 516, "value": "Ornn"},
+    { "key": 142, "value": "Zoe"},
+    { "key": 498, "value": "Xayah"},
+    { "key": 497, "value": "Rakan"},
+    { "key": 555, "value": "Pyke"},
+    { "key": 145, "value": "Kai'Sa"},
+    { "key": 518, "value": "Neeko"},
+    { "key": 235, "value": "Senna"},
+    { "key": 523, "value": "Aphelios"},
+    { "key": 517, "value": "Sylas"},
+    { "key": 350, "value": "Yuumi"},
+    { "key": 246, "value": "Qiyana"},
+    { "key": 875, "value": "Sett"},
+    { "key": 876, "value": "Lillia"},
+    { "key": 777, "value": "Yone"}];
+
+    champs.forEach(champ => {
+        if(champ.key == id) {
+            return champ.value;
+        }
+    });
+    
+    return "Samira"; // Default
 }

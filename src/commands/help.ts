@@ -11,11 +11,11 @@ class CmdTemplate implements IBotCommand {
     }
 
     public isCommand(command: string): boolean {
-        return command == this.cmdName;
+        return command === this.cmdName;
     }
 
     public async execute(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
-        if(this.commands.length == 0) {
+        if(this.commands.length === 0) {
             this.commands = loadAllCommands(`${__dirname}/`);
         }
         
