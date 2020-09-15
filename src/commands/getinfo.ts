@@ -7,7 +7,7 @@ class GetInfo implements IBotCommand {
     readonly cmdName = "getinfo";
 
     public help(): string {
-        return "This command has two arguments: the summoner name and the region(euw, eune, etc). It will return info about that summoner";
+        return "This is a command that requires the summoner name and the region that returns some info about the summoner.\n Example: '-getinfo the inescapable euw'";
     }
 
     public isCommand(command: string): boolean {
@@ -17,18 +17,25 @@ class GetInfo implements IBotCommand {
     public async execute(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
         msgObject.delete().catch(process.stderr.write);
 
-        const regServer = LolApi.checkRegion(args[1]);
+        const regServer = LolApi.checkRegion(args[args.length-1]);
+        let summonerName = "";
+        for(let i = 0; i < args.length - 1; ++i) {
+            summonerName += args[i];
+            if(i != args.length - 2) {
+                summonerName += " ";
+            }
+        }
 
         if (regServer) {
             const baseServer = `${regServer}${LolApi.apiRoute}`;
-            const route = `https://${baseServer}${LolApi.summonerDataRoute}${args[0]}?api_key=${process.env.RIOT_TOKEN}`;
+            const route = `https://${baseServer}${LolApi.summonerDataRoute}${summonerName}?api_key=${process.env.RIOT_TOKEN}`;
             axios.get(route).then((res) => {
                 const encrySumm = res.data["id"];
                 const summLevel = res.data["summonerLevel"];
 
                 let embed = new Discord.MessageEmbed()
                     .setColor("#0099ff")
-                    .setTitle(`Here is some info about ${res.data["name"]} (${args[1].toUpperCase()})`)
+                    .setTitle(`Here is some info about __**${res.data["name"]}**__ (${args[args.length - 1].toUpperCase()})`)
                     .setURL("https://github.com/gramanicu/ShroomBot#readme")
                     .setThumbnail("https://cdn.discordapp.com/app-icons/755011946654335034/5f1aed402fe3b8fb61df8e397510e858.png");
 
@@ -72,16 +79,16 @@ class GetInfo implements IBotCommand {
                         embed.setTimestamp();
                         msgObject.channel.send(embed).catch(process.stderr.write);
                     }).catch(() => {
-                        process.stderr.write(`Couldn't find ranked data for ${args[0]}`);
-                        msgObject.channel.send(`Couldn't find ranked data for ${args[0]}`);
+                        process.stderr.write(`Couldn't find ranked data for ${summonerName}`);
+                        msgObject.channel.send(`Couldn't find ranked data for ${summonerName}`);
                     });
                 }).catch(() => {
                     process.stderr.write("Couldn't access mastery data");
                     msgObject.channel.send("Couldn't access mastery data");
                 });
             }).catch(() => {
-                process.stderr.write(`Couldn't find summoner ${args[0]}`);
-                msgObject.channel.send(`Couldn't find summoner ${args[0]}`);
+                process.stderr.write(`Couldn't find summoner ${summonerName}`);
+                msgObject.channel.send(`Couldn't find summoner ${summonerName}`);
             });
         } else {
             msgObject.channel.send(`The region does not exist - ${args[1]}`);
