@@ -5,7 +5,7 @@ export const summonerLeagues = '/lol/league/v4/entries/by-summoner/'; // + encry
 
 /**
  * Returns the actual server name for the specified region
- * @param region The name of the region 
+ * @param region The name of the region
  */
 export function checkRegion(region: string): string {
     switch (region.toLowerCase()) {
@@ -157,10 +157,6 @@ export function getChampName(id: number): string {
         case 59: return "Jarvan IV";
         case 81: return "Ezreal";
         case 164: return "Camille";
-        case 136: return "Aurelion Sol";
-        case 427: return "Ivern";
-        case 240: return "Kled";
-        case 163: return "Taliyah";
         case 141: return "Kayn";
         case 516: return "Ornn";
         case 142: return "Zoe";

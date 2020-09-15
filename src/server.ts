@@ -1,7 +1,7 @@
-import * as Dotenv from 'dotenv'
-import * as Discord from 'discord.js'
-import IBotCommand, { loadAllCommands } from './iBotCommand'
-import fs from 'fs'
+import * as Dotenv from 'dotenv';
+import * as Discord from 'discord.js';
+import IBotCommand, { loadAllCommands } from './iBotCommand';
+import fs from 'fs';
 
 
 // Initialise server
@@ -26,7 +26,7 @@ bot.on("message", handleMessage);
 
 /**
  * Check if the command is a valid one and executes it
- * @param message The received message 
+ * @param message The received message
  */
 function handleMessage(message: Discord.Message): void {
     if(message.author.bot || message.channel.type === 'dm' || !message.content.startsWith(cmdPrefix)) {
@@ -38,7 +38,7 @@ function handleMessage(message: Discord.Message): void {
     const cmdText:string = msg.split(' ')[0].replace(cmdPrefix, '').toLowerCase();
     const args: string[] = msg.split(' ').slice(1);
 
-    commands.forEach(async (cmd: IBotCommand): Promise<void> => {
+    commands.forEach(async(cmd: IBotCommand): Promise<void> => {
         // Attempt to execute the command
         try {
             if(!cmd.isCommand(cmdText)) {
@@ -48,7 +48,7 @@ function handleMessage(message: Discord.Message): void {
             // Execute the command (pause the execution of the loop)
             await cmd.execute(args, message, bot);
         } catch (err) {
-            console.log(err);
+            process.stderr.write(err);
         }
     });
 }

@@ -1,5 +1,5 @@
-import * as Discord from 'discord.js'
-import fs from 'fs'
+import * as Discord from 'discord.js';
+import fs from 'fs';
 
 /**
  * An interface that describes a bot command
@@ -32,9 +32,9 @@ export function loadAllCommands(cmdFolder: string): IBotCommand[] {
         const cmdClass = require(`${cmdFolder}${file}`).default;
         const cmd = new cmdClass() as IBotCommand;
         commands.push(cmd);
-    })
+    });
 
     return commands;
-}
+};
 
 export default IBotCommand;
