@@ -3,7 +3,7 @@ import IBotCommand from "../iBotCommand";
 import * as LolApi from "../lolApi";
 import axios from "axios";
 
-class CmdTemplate implements IBotCommand {
+class GetInfo implements IBotCommand {
     readonly cmdName = "getinfo";
 
     public help(): string {
@@ -47,7 +47,7 @@ class CmdTemplate implements IBotCommand {
                         };
                     });
 
-                    const route3 = `https://${baseServer}${LolApi.summonerLeagues}${encrySumm}?api_key=${process.env.RIOT_TOKEN}`;
+                    const route3 = `https://${baseServer}${LolApi.summonerLeaguesRoute}${encrySumm}?api_key=${process.env.RIOT_TOKEN}`;
                     axios.get(route3).then((res) => {
                         const soloqData = res.data.filter((queue: any) => {
                             return queue["queueType"] === "RANKED_SOLO_5x5";
@@ -89,4 +89,4 @@ class CmdTemplate implements IBotCommand {
     };
 }
 
-export default CmdTemplate;
+export default GetInfo;

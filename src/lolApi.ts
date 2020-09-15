@@ -1,7 +1,8 @@
 export const apiRoute = ".api.riotgames.com";
 export const summonerDataRoute = "/lol/summoner/v4/summoners/by-name/"; // + summoner name
 export const champMasteryRoute = "/lol/champion-mastery/v4/champion-masteries/by-summoner/"; // + encrypted summoner id
-export const summonerLeagues = "/lol/league/v4/entries/by-summoner/"; // + encrypted summoner id
+export const summonerLeaguesRoute = "/lol/league/v4/entries/by-summoner/"; // + encrypted summoner id
+export const champRotationRoute = "/lol/platform/v3/champion-rotations";
 
 /**
  * Returns the actual server name for the specified region

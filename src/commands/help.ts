@@ -1,7 +1,7 @@
 import * as Discord from "discord.js";
 import IBotCommand, { loadAllCommands } from '../iBotCommand';
 
-class CmdTemplate implements IBotCommand {
+class Help implements IBotCommand {
     private commands: IBotCommand[] = [];
 
     readonly cmdName = "help";
@@ -40,4 +40,4 @@ class CmdTemplate implements IBotCommand {
     }
 }
 
-export default CmdTemplate;
+export default Help;
