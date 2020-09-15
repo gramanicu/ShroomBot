@@ -17,12 +17,12 @@ const cmdFolder: fs.PathLike = `${__dirname}/commands/`;
 const commands: IBotCommand[] = loadAllCommands(cmdFolder);
 
 // Bot Events
-bot.on('ready', () => {
+bot.on("ready", () => {
     process.stdout.write('Bot started\n');
     bot.user.setActivity('The most tilting game ever', {type: 'PLAYING'});
 });
 
-bot.on('message', handleMessage);
+bot.on("message", handleMessage);
 
 /**
  * Check if the command is a valid one and executes it

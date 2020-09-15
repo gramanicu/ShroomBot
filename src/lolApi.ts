@@ -1,7 +1,7 @@
 export const apiRoute = '.api.riotgames.com';
-export const summonerDataRoute = '/lol/summoner/v4/summoners/by-name/' // + summoner name
-export const champMasteryRoute = '/lol/champion-mastery/v4/champion-masteries/by-summoner/' // + encrypted summoner id
-export const summonerLeagues = '/lol/league/v4/entries/by-summoner/' // + encrypted summoner id
+export const summonerDataRoute = '/lol/summoner/v4/summoners/by-name/'; // + summoner name
+export const champMasteryRoute = '/lol/champion-mastery/v4/champion-masteries/by-summoner/'; // + encrypted summoner id
+export const summonerLeagues = '/lol/league/v4/entries/by-summoner/'; // + encrypted summoner id
 
 /**
  * Returns the actual server name for the specified region
@@ -9,11 +9,11 @@ export const summonerLeagues = '/lol/league/v4/entries/by-summoner/' // + encryp
  */
 export function checkRegion(region: string): string {
     switch (region.toLowerCase()) {
-        case 'eune': return 'eun1'
-        case 'euw': return 'euw1'
-        case 'kr': return 'kr'
-        case 'na': return 'na1'
-        default: return '';
+        case "eune": return "eun1";
+        case "euw": return "euw1";
+        case "kr": return "kr";
+        case "na": return "na1";
+        default: return "";
     }
 }
 
