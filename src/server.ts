@@ -46,9 +46,9 @@ function handleMessage(message: Discord.Message): void {
                 return;
             }
 
+            executedOne = true;
             // Execute the command (pause the execution of the loop)
             await cmd.execute(args, message, bot);
-            executedOne = true;
         } catch (err) {
             process.stderr.write(err);
         }
