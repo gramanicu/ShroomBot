@@ -1,0 +1,21 @@
+  name: Github Check
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Compile the app
+      run: npm install --production
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Check the coding style (Lint)
+        run: |
+          npm install tslint
+           ./node_modules/tslint/bin/tslint src/*.ts{,x}
+           ./node_modules/tslint/bin/tslint src/**/*.ts{,x}
