@@ -6,6 +6,7 @@
         "no-parameter-reassignment": true,
         "typedef": [true, "call-signature"],
         "readonly-keyword": true,
+        "no-object-mutation": true,
         "no-delete": true,
         "no-trailing-whitespace": [true, "always"],
         "prefer-const": [true, {"destructuring": "any"}],
