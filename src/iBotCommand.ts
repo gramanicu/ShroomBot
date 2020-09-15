@@ -35,6 +35,6 @@ export function loadAllCommands(cmdFolder: string): IBotCommand[] {
     });
 
     return commands;
-};
+}
 
 export default IBotCommand;
