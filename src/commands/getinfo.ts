@@ -7,7 +7,7 @@ class GetInfo implements IBotCommand {
     readonly cmdName = "getinfo";
 
     public help(): string {
-        return "This command returns info about a summoner";
+        return "This command has two arguments: the summoner name and the region(euw, eune, etc). It will return info about that summoner";
     }
 
     public isCommand(command: string): boolean {
