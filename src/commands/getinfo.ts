@@ -27,10 +27,10 @@ class CmdTemplate implements IBotCommand {
                 const summLevel = res.data["summonerLevel"];
 
                 let embed = new Discord.MessageEmbed()
-                .setColor("#0099ff")
-                .setTitle(`Here is some info about ${res.data["name"]} (${args[1].toUpperCase()})`)
-                .setURL("https://github.com/gramanicu/ShroomBot#readme")
-                .setThumbnail("https://cdn.discordapp.com/app-icons/755011946654335034/5f1aed402fe3b8fb61df8e397510e858.png");
+                    .setColor("#0099ff")
+                    .setTitle(`Here is some info about ${res.data["name"]} (${args[1].toUpperCase()})`)
+                    .setURL("https://github.com/gramanicu/ShroomBot#readme")
+                    .setThumbnail("https://cdn.discordapp.com/app-icons/755011946654335034/5f1aed402fe3b8fb61df8e397510e858.png");
 
                 const route2 = `https://${baseServer}${LolApi.champMasteryRoute}${encrySumm}?api_key=${process.env.RIOT_TOKEN}`;
                 axios.get(route2).then((res) => {
@@ -53,21 +53,23 @@ class CmdTemplate implements IBotCommand {
                             return queue["queueType"] === "RANKED_SOLO_5x5";
                         })[0];
 
-                        const tier = soloqData["tier"].toLowerCase();
-                        const rank = soloqData["rank"].toUpperCase();
-                        const lp = soloqData["leaguePoints"];
-                        const wins = soloqData["wins"];
-                        const loses = soloqData["losses"];
-                        const winrate = Math.floor((100 * wins) / (wins + loses));
+                        if (soloqData) {
+                            const tier = soloqData["tier"].toLowerCase();
+                            const rank = soloqData["rank"].toUpperCase();
+                            const lp = soloqData["leaguePoints"];
+                            const wins = soloqData["wins"];
+                            const loses = soloqData["losses"];
+                            const winrate = Math.floor((100 * wins) / (wins + loses));
 
-                        embed.setDescription(`He is level ${summLevel}.\n His rank is ${tier} ${rank} ${lp} LP, with ${wins}W ${loses}L - ${(winrate)}%`);
+                            embed.setDescription(`He is level ${summLevel}.\n His rank is ${tier} ${rank} ${lp} LP, with ${wins}W ${loses}L - ${(winrate)}%`);
+                        } else {
+                            embed.setDescription(`He is level ${summLevel}.\n`);
+                        }
 
                         champs.forEach((champion) => {
-                            embed.addField(`${champion.name}` , `${(Math.floor(champion.mastery / 1000))} k mastery points, Level ${champion.level}`, false);
+                            embed.addField(`${champion.name}`, `${(Math.floor(champion.mastery / 1000))} k mastery points, Level ${champion.level}`, false);
                         });
-    
                         embed.setTimestamp();
-    
                         msgObject.channel.send(embed).catch(process.stderr.write);
                     }).catch(() => {
                         process.stderr.write(`Couldn't find ranked data for ${args[0]}`);
