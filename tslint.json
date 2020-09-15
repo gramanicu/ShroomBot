@@ -9,6 +9,7 @@
         "no-object-mutation": true,
         "no-delete": true,
         "no-mixed-interface": true,
+        "max-line-length": false,
         "no-trailing-whitespace": [true, "always"],
         "prefer-const": [true, {"destructuring": "any"}],
         "semicolon": [true, "always"],
