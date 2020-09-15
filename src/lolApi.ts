@@ -173,11 +173,9 @@ export function getChampName(id: number): string {
     { "key": 876, "value": "Lillia"},
     { "key": 777, "value": "Yone"}];
 
-    champs.forEach(champ => {
-        if(champ.key == id) {
-            return champ.value;
-        }
+    const champ = champs.filter((elem) => {
+        return elem.key === id;
     });
-    
-    return "Samira"; // Default
+
+    return (champ.length === 1) ? champ[0].value : "Samira";
 }
