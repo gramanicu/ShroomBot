@@ -69,9 +69,20 @@ class CmdTemplate implements IBotCommand {
                         embed.setTimestamp();
     
                         msgObject.channel.send(embed).catch(process.stderr.write);
+                    }).catch(() => {
+                        process.stderr.write(`Couldn't find ranked data for ${args[0]}`);
+                        msgObject.channel.send(`Couldn't find ranked data for ${args[0]}`);
                     });
-                }).catch(console.error);
-            })
+                }).catch(() => {
+                    process.stderr.write("Couldn't access mastery data");
+                    msgObject.channel.send("Couldn't access mastery data");
+                });
+            }).catch(() => {
+                process.stderr.write(`Couldn't find summoner ${args[0]}`);
+                msgObject.channel.send(`Couldn't find summoner ${args[0]}`);
+            });
+        } else {
+            msgObject.channel.send(`The region does not exist - ${args[1]}`);
         }
     };
 }
