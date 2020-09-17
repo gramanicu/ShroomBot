@@ -81,14 +81,15 @@ class FYou implements IBotCommand {
 
         msgObject.delete().catch(process.stderr.write);
 
-        const isSpecial = chance(20); // 20% chance for a omega squad quote
+        const isSpecial = chance(25); // 25% chance for a omega squad quote
 
         const quote = isSpecial ? randomArrayElement(this.omegaQuotes) : randomArrayElement(this.quotes);
 
         let embed = new Discord.MessageEmbed()
             .setColor("#0099ff")
-            .setTitle(quote)
+            .setTitle("Teemo Says:")
             .setURL("https://github.com/gramanicu/ShroomBot#readme")
+            .setDescription(quote)
             .setThumbnail("https://cdn.discordapp.com/app-icons/755011946654335034/5f1aed402fe3b8fb61df8e397510e858.png");
 
         msgObject.channel.send(embed).catch(process.stderr.write);

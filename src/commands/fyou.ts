@@ -18,8 +18,9 @@ class FYou implements IBotCommand {
         
         let embed = new Discord.MessageEmbed()
             .setColor("#0099ff")
-            .setTitle("Fuck You Too!")
+            .setTitle("Teemo Says:")
             .setURL("https://github.com/gramanicu/ShroomBot#readme")
+            .setDescription("Fuck You Too!")
             .setThumbnail("https://cdn.discordapp.com/app-icons/755011946654335034/5f1aed402fe3b8fb61df8e397510e858.png");
 
         msgObject.channel.send(embed).catch(process.stderr.write);
