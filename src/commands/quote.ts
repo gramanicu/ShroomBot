@@ -9,7 +9,7 @@ import IBotCommand from "../iBotCommand";
 const chance = (probability: number): boolean => {
     const res = Math.random() * 100;
     return res <= probability;
-}
+};
 
 /**
  * Return a random element from an array
@@ -17,9 +17,11 @@ const chance = (probability: number): boolean => {
  */
 const randomArrayElement = (array: any[]): any => {
     return array[Math.floor(Math.random() * array.length)];
-} 
+};
 
 class FYou implements IBotCommand {
+    public readonly cmdName: string = "quote";
+    
     private quotes: string[] = [
         "Captain Teemo on duty.",
         "Yes, sir!",
@@ -66,8 +68,6 @@ class FYou implements IBotCommand {
         "They won't make the mistake of thinking you're harmless again.",
         "We'll make them pay for what they did to your family little guy.",
     ];
-
-    public readonly cmdName: string = "quote";
 
     public help(): string {
         return "Returns a random teemo quote";

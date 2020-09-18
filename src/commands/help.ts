@@ -2,9 +2,8 @@ import * as Discord from "discord.js";
 import IBotCommand, { loadAllCommands } from "../iBotCommand";
 
 class Help implements IBotCommand {
-    private commands: IBotCommand[] = [];
-
     public readonly cmdName: string = "help";
+    private commands: IBotCommand[] = [];
 
     public help(): string {
         return "This is a command that returns all the available commands";
