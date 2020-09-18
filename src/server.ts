@@ -1,8 +1,7 @@
-import * as Dotenv from "dotenv";
-import * as Discord from "discord.js";
-import IBotCommand, { loadAllCommands } from "./iBotCommand";
-import fs from "fs";
-
+import * as Dotenv from 'dotenv';
+import * as Discord from 'discord.js';
+import IBotCommand, { loadAllCommands } from './iBotCommand';
+import fs from 'fs';
 
 // Initialise server
 Dotenv.config();
@@ -19,39 +18,50 @@ const commands: IBotCommand[] = loadAllCommands(cmdFolder);
 // Bot Events
 
 // When the bot connects
-bot.on("ready", () => {
-    process.stdout.write("Bot started\n");
-    bot.user.setActivity("The most tilting game ever", {type: "PLAYING"});
+bot.on('ready', () => {
+    process.stdout.write('Bot started\n');
+    bot.user.setActivity('The most tilting game ever', { type: 'PLAYING' });
 });
 
 // When a message is received
-bot.on("message", (message: Discord.Message): void => {
-    if(message.author.bot || message.channel.type === "dm" || !message.content.startsWith(cmdPrefix)) {
+bot.on('message', (message: Discord.Message): void => {
+    if (
+        message.author.bot ||
+        message.channel.type === 'dm' ||
+        !message.content.startsWith(cmdPrefix)
+    ) {
         return;
     }
 
     // The content of the message
     const msg: string = message.content;
-    const cmdText: string = msg.split(" ")[0].replace(cmdPrefix, "").toLowerCase();
-    const args: string[] = msg.split(" ").slice(1);
+    const cmdText: string = msg
+        .split(' ')[0]
+        .replace(cmdPrefix, '')
+        .toLowerCase();
+    const args: string[] = msg.split(' ').slice(1);
 
     let executedOne = false;
-    commands.forEach(async(cmd: IBotCommand): Promise<void> => {
-        // Attempt to execute the command
-        try {
-            if(!cmd.isCommand(cmdText)) {
-                return;
+    commands.forEach(
+        async (cmd: IBotCommand): Promise<void> => {
+            // Attempt to execute the command
+            try {
+                if (!cmd.isCommand(cmdText)) {
+                    return;
+                }
+
+                executedOne = true;
+                // Execute the command (pause the execution of the loop)
+                await cmd.execute(args, message, bot);
+            } catch (err) {
+                process.stderr.write(err);
             }
-
-            executedOne = true;
-            // Execute the command (pause the execution of the loop)
-            await cmd.execute(args, message, bot);
-        } catch (err) {
-            process.stderr.write(err);
         }
-    });
+    );
 
-    if(!executedOne) {
-        message.channel.send("Invalid command. Use help command to list all available commands");
+    if (!executedOne) {
+        message.channel.send(
+            'Invalid command. Use help command to list all available commands'
+        );
     }
 });
