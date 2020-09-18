@@ -4,7 +4,7 @@ import IBotCommand, { loadAllCommands } from "../iBotCommand";
 class Help implements IBotCommand {
     private commands: IBotCommand[] = [];
 
-    readonly cmdName = "help";
+    public readonly cmdName: string = "help";
 
     public help(): string {
         return "This is a command that returns all the available commands";

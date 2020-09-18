@@ -4,7 +4,7 @@ import * as LolApi from "../lolApi";
 import axios from "axios";
 
 class GetInfo implements IBotCommand {
-    readonly cmdName = "getinfo";
+    public readonly cmdName: string = "getinfo";
 
     public help(): string {
         return "This is a command that requires the summoner name and the region that returns some info about the summoner.\n Example: '-getinfo the inescapable euw'";
@@ -47,11 +47,11 @@ class GetInfo implements IBotCommand {
                     const champLevel: number[] = res.data.slice(0, champNum).map((data: any) => parseInt(data["championLevel"]));
 
                     const champName: string[] = champId.map((id) => LolApi.getChampName(id));
-                    var champs = champName.map((name, i: number) => {
+                    const champs = champName.map((name, i: number) => {
                         return {
-                            name,
-                            mastery: champMastery[i],
                             level: champLevel[i],
+                            mastery: champMastery[i],
+                            name,
                         };
                     });
 

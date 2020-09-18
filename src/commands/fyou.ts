@@ -1,8 +1,8 @@
 import * as Discord from "discord.js";
-import IBotCommand from '../iBotCommand';
+import IBotCommand from "../iBotCommand";
 
 class FYou implements IBotCommand {
-    readonly cmdName = "fuckyou";
+    public readonly cmdName:string = "fuckyou";
 
     public help(): string {
         return "Don't do it";
@@ -16,7 +16,7 @@ class FYou implements IBotCommand {
         
         msgObject.delete().catch(process.stderr.write);
         
-        let embed = new Discord.MessageEmbed()
+        const embed = new Discord.MessageEmbed()
             .setColor("#0099ff")
             .setTitle("Teemo Says:")
             .setURL("https://github.com/gramanicu/ShroomBot#readme")

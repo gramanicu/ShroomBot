@@ -17,25 +17,22 @@ const cmdFolder: fs.PathLike = `${__dirname}/commands/`;
 const commands: IBotCommand[] = loadAllCommands(cmdFolder);
 
 // Bot Events
+
+// When the bot connects
 bot.on("ready", () => {
     process.stdout.write("Bot started\n");
     bot.user.setActivity("The most tilting game ever", {type: "PLAYING"});
 });
 
-bot.on("message", handleMessage);
-
-/**
- * Check if the command is a valid one and executes it
- * @param message The received message
- */
-function handleMessage(message: Discord.Message): void {
+// When a message is received
+bot.on("message", (message: Discord.Message): void => {
     if(message.author.bot || message.channel.type === "dm" || !message.content.startsWith(cmdPrefix)) {
         return;
     }
 
     // The content of the message
     const msg: string = message.content;
-    const cmdText:string = msg.split(" ")[0].replace(cmdPrefix, "").toLowerCase();
+    const cmdText: string = msg.split(" ")[0].replace(cmdPrefix, "").toLowerCase();
     const args: string[] = msg.split(" ").slice(1);
 
     let executedOne = false;
@@ -57,4 +54,4 @@ function handleMessage(message: Discord.Message): void {
     if(!executedOne) {
         message.channel.send("Invalid command. Use help command to list all available commands");
     }
-}
+});

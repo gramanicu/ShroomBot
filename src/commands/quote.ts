@@ -1,12 +1,12 @@
 import * as Discord from "discord.js";
-import IBotCommand from '../iBotCommand';
+import IBotCommand from "../iBotCommand";
 
 
 /**
  * Randomises with a probability
  * @param probability The probability to have a positive result
  */
-function chance(probability: number): boolean {
+const chance = (probability: number): boolean => {
     const res = Math.random() * 100;
     return res <= probability;
 }
@@ -15,12 +15,12 @@ function chance(probability: number): boolean {
  * Return a random element from an array
  * @param array The array to be used
  */
-function randomArrayElement(array: any[]): any {
+const randomArrayElement = (array: any[]): any => {
     return array[Math.floor(Math.random() * array.length)];
 } 
 
 class FYou implements IBotCommand {
-    private quotes = [
+    private quotes: string[] = [
         "Captain Teemo on duty.",
         "Yes, sir!",
         "Hut, two, three, four.",
@@ -30,10 +30,10 @@ class FYou implements IBotCommand {
         "Reporting in.",
         "Swiftly!",
         "Never underestimate the power of the Scout's code.",
-        "Size doesn't mean everything."
+        "Size doesn't mean everything.",
     ];
 
-    private omegaQuotes = [
+    private omegaQuotes: string[] = [
         "The war never ends, the battlefield just changes.",
         "Survive here a week, then you get a name.",
         "There's a mushroom out there with your name on it.",
@@ -64,10 +64,10 @@ class FYou implements IBotCommand {
         "Here you go, little guy. You're my only friend left.",
         "You and I are survivors, buddy. They can never kill us.",
         "They won't make the mistake of thinking you're harmless again.",
-        "We'll make them pay for what they did to your family little guy."
+        "We'll make them pay for what they did to your family little guy.",
     ];
 
-    readonly cmdName = "quote";
+    public readonly cmdName: string = "quote";
 
     public help(): string {
         return "Returns a random teemo quote";
@@ -85,7 +85,7 @@ class FYou implements IBotCommand {
 
         const quote = isSpecial ? randomArrayElement(this.omegaQuotes) : randomArrayElement(this.quotes);
 
-        let embed = new Discord.MessageEmbed()
+        const embed = new Discord.MessageEmbed()
             .setColor("#0099ff")
             .setTitle("Teemo Says:")
             .setURL("https://github.com/gramanicu/ShroomBot#readme")

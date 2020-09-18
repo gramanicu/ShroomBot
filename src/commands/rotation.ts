@@ -4,7 +4,7 @@ import * as LolApi from "../lolApi";
 import axios from "axios";
 
 class Rotation implements IBotCommand {
-    readonly cmdName = "rotation";
+    public readonly cmdName: string = "rotation";
 
     public help(): string {
         return "This is a command that returns the current champion rotation";
