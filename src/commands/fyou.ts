@@ -2,7 +2,7 @@ import * as Discord from "discord.js";
 import IBotCommand from "../iBotCommand";
 
 class FYou implements IBotCommand {
-    public readonly cmdName:string = "fuckyou";
+    public readonly cmdName: string = "fuckyou";
 
     public help(): string {
         return "Don't do it";
