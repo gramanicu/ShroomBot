@@ -17,7 +17,7 @@ class Rotation implements IBotCommand {
     public async execute(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
         msgObject.delete().catch(process.stderr.write);
         
-        let embed = new Discord.MessageEmbed()
+        const embed = new Discord.MessageEmbed()
             .setColor("#0099ff")
             .setTitle("ShroomBot")
             .setURL("https://github.com/gramanicu/ShroomBot#readme")
@@ -35,7 +35,7 @@ class Rotation implements IBotCommand {
             champs.forEach((id, i) => {
                 const key = LolApi.getChampName(id);
                 rot += key;
-                if(i != champs.length - 1) {
+                if(i !== champs.length - 1) {
                     rot += ", ";
                 }
             });

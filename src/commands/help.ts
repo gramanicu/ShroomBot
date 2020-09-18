@@ -1,5 +1,5 @@
 import * as Discord from "discord.js";
-import IBotCommand, { loadAllCommands } from '../iBotCommand';
+import IBotCommand, { loadAllCommands } from "../iBotCommand";
 
 class Help implements IBotCommand {
     private commands: IBotCommand[] = [];
@@ -21,7 +21,7 @@ class Help implements IBotCommand {
         
         msgObject.delete().catch(process.stderr.write);
         
-        let embed = new Discord.MessageEmbed()
+        const embed = new Discord.MessageEmbed()
             .setColor("#0099ff")
             .setTitle("ShroomBot")
             .setURL("https://github.com/gramanicu/ShroomBot#readme")

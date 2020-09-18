@@ -21,7 +21,7 @@ class GetInfo implements IBotCommand {
         let summonerName = "";
         for(let i = 0; i < args.length - 1; ++i) {
             summonerName += args[i];
-            if(i != args.length - 2) {
+            if(i !== args.length - 2) {
                 summonerName += " ";
             }
         }
@@ -33,7 +33,7 @@ class GetInfo implements IBotCommand {
                 const encrySumm = res.data["id"];
                 const summLevel = res.data["summonerLevel"];
 
-                let embed = new Discord.MessageEmbed()
+                const embed = new Discord.MessageEmbed()
                     .setColor("#0099ff")
                     .setTitle(`Here is some info about __**${res.data["name"]}**__ (${args[args.length - 1].toUpperCase()})`)
                     .setURL("https://github.com/gramanicu/ShroomBot#readme")
@@ -41,9 +41,10 @@ class GetInfo implements IBotCommand {
 
                 const route2 = `https://${baseServer}${LolApi.champMasteryRoute}${encrySumm}?api_key=${process.env.RIOT_TOKEN}`;
                 axios.get(route2).then((res) => {
-                    const champId: number[] = res.data.slice(0, 5).map((data: any) => parseInt(data["championId"]));
-                    const champMastery: number[] = res.data.slice(0, 5).map((data: any) => parseInt(data["championPoints"]));
-                    const champLevel: number[] = res.data.slice(0, 5).map((data: any) => parseInt(data["championLevel"]));
+                    const champNum = 5;
+                    const champId: number[] = res.data.slice(0, champNum).map((data: any) => parseInt(data["championId"]));
+                    const champMastery: number[] = res.data.slice(0, champNum).map((data: any) => parseInt(data["championPoints"]));
+                    const champLevel: number[] = res.data.slice(0, champNum).map((data: any) => parseInt(data["championLevel"]));
 
                     const champName: string[] = champId.map((id) => LolApi.getChampName(id));
                     var champs = champName.map((name, i: number) => {
@@ -93,7 +94,7 @@ class GetInfo implements IBotCommand {
         } else {
             msgObject.channel.send(`The region does not exist - ${args[1]}`);
         }
-    };
+    }
 }
 
 export default GetInfo;
