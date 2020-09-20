@@ -29,7 +29,7 @@ class Help implements IBotCommand {
             .setURL('https://github.com/gramanicu/ShroomBot#readme')
             .setDescription('A discord bot that uses the Riot API')
             .setThumbnail(
-                'https://cdn.discordapp.com/app-icons/755011946654335034/5f1aed402fe3b8fb61df8e397510e858.png'
+                'https://cdn.discordapp.com/app-icons/755011946654335034/330c69e8919d78bf3ee8ca4efa028bb9.png'
             );
 
         this.commands.forEach((cmd) => {
