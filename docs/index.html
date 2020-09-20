@@ -2,10 +2,63 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="./public/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shroom Bot</title>
+    <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    Work in progress
+    <div class="flex-container container" id="app">
+      <div class="main-container">
+        <div id="description">
+          <div id="desc-header">
+            <h2>
+              <a href="">
+                <img
+                  src="./public/images/logo.png"
+                  class="inline-logo"
+                  alt="ShroomBot"
+                  height="72px"
+                  width="72px"
+                />
+                <span class="inline-text">ShroomBot</span>
+              </a>
+            </h2>
+          </div>
+          <div id="desc-content">
+            <div id="content-right">
+              <h2>Hello there !</h2>
+              <p>
+                ShroomBot is a Discord Bot that can show League of Legends
+                player's stats, the weekly rotation, and a few other things.
+              </p>
+              <h3>Example commands</h3>
+              <p>
+                  <ul>
+                      <li>-help - available commands</li>
+                      <li>-getinfo $(summoner) $(region) - summoner information</li>
+                      <li>-rotation - the weekly rotation </li>
+                      <li>-quote - a random Teemo quote </li>
+                  </ul>
+              </p>
+              <h4>Even more commands could be implemented in the future</h4>
+            </div>
+            <div id="content-left">
+              <div class="button-wrapper">
+                <a href="https://discord.com/api/oauth2/authorize?client_id=755011946654335034&permissions=130048&redirect_uri=https%3A%2F%2Fshroomdiscord.herokuapp.com%2F&scope=bot" class="button">
+                  <img
+                    src="public/images/discord.svg"
+                    class="button-image"
+                    width="48px"
+                    height="40px"
+                  />
+                  Add to Discord
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
