@@ -1,8 +1,8 @@
-import * as Discord from 'discord.js';
-import IBotCommand from '../iBotCommand';
+import * as Discord from "discord.js";
+import IBotCommand from "../iBotCommand";
 
 class FYou implements IBotCommand {
-    public readonly cmdName: string = 'fuckyou';
+    public readonly cmdName: string = "fuckyou";
 
     public help(): string {
         return "Don't do it";
@@ -12,12 +12,10 @@ class FYou implements IBotCommand {
         return command === this.cmdName;
     }
 
-    public async execute(
-        args: string[],
-        msgObject: Discord.Message
-    ): Promise<void> {
+    public async execute(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
+        
         msgObject.delete().catch(process.stderr.write);
-
+        
         const embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle('Teemo Says:')

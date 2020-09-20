@@ -1,5 +1,5 @@
-import * as Discord from 'discord.js';
-import fs from 'fs';
+import * as Discord from "discord.js";
+import fs from "fs";
 
 /**
  * An interface that describes a bot command
@@ -22,11 +22,7 @@ interface IBotCommand {
      * @param msgObject The message (in the discord client) that was received
      * @param client The bot client
      */
-    execute(
-        args: string[],
-        msgObject: Discord.Message,
-        client: Discord.Client
-    ): Promise<void>;
+    execute(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void>;
 }
 
 /**
